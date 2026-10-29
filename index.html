@@ -3,9 +3,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Plan Recomposición 10 semanas</title>
 <style>
-:root{color-scheme:light dark;--bg:#f4f6f8;--cd:#fff;--tx:#14181f;--mu:#667085;--ac:#1f7a5c;--ln:#e1e5ea;--ac2:#e6f4ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1318;--cd:#181e26;--tx:#eef1f5;--mu:#98a2b3;--ac:#3fbf93;--ln:#2a323d;--ac2:#1a2e28}}
-:root[data-theme="dark"]{--bg:#0f1318;--cd:#181e26;--tx:#eef1f5;--mu:#98a2b3;--ac:#3fbf93;--ln:#2a323d;--ac2:#1a2e28}
+:root{color-scheme:light dark;--bg:#f3f5f9;--cd:#fff;--tx:#14181f;--mu:#667085;--ac:#1d4ed8;--rd:#dc2626;--ln:#e1e5ea;--ac2:#e8effd;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1020;--cd:#141b2e;--tx:#eef1f5;--mu:#98a2b3;--ac:#4a7bff;--rd:#ff5c6c;--ln:#26304a;--ac2:#16233f}}
+:root[data-theme="dark"]{--bg:#0b1020;--cd:#141b2e;--tx:#eef1f5;--mu:#98a2b3;--ac:#4a7bff;--rd:#ff5c6c;--ln:#26304a;--ac2:#16233f}
 *{box-sizing:border-box}html,body{margin:0}
 body{background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:12px;max-width:640px;margin:0 auto}
 h1{font-size:19px;margin:4px 0}h2{font-size:16px;margin:0 0 8px}
@@ -36,7 +36,7 @@ input[type=text]{width:100%}textarea{width:100%;height:80px;font-size:12px}
 .ex input[type=checkbox]{width:30px;height:30px;flex:0 0 30px;margin:0}
 .ex.dn .nm b{text-decoration:line-through;opacity:.55}
 .th{width:68px;height:68px;flex:0 0 68px}
-.th .h{fill:var(--ac);stroke:none}.th .e{stroke:var(--mu);stroke-width:3}.th .a{stroke:#e8590c;stroke-width:2.5;stroke-dasharray:4 3}
+.th .h{fill:var(--ac);stroke:none}.th .e{stroke:var(--mu);stroke-width:3}.th .a{stroke:var(--rd);stroke-width:2.5;stroke-dasharray:4 3}
 .in{display:flex;gap:10px;margin-top:10px;align-items:stretch}
 .in .f{flex:1;display:flex;flex-direction:column;gap:3px;min-width:0}.in .f span{font-size:12px;color:var(--mu)}
 .kg{display:flex;gap:4px}.kg input{flex:1;min-width:0}
@@ -49,11 +49,40 @@ input[type=number],input[type=text],input[type=date]{min-height:46px;font-size:1
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
 .btn{min-height:48px;font-size:16px}.btn.w{width:100%}
 .fl{flex-wrap:wrap}.fl>*{flex:1 1 auto}
+.sh,.sr{display:grid;grid-template-columns:34px 1fr 1fr 52px;gap:6px;align-items:center}
+.sh{margin-top:10px;font-size:12px;color:var(--mu)}.sr{margin-top:6px}.sr b{font-size:14px;color:var(--mu);text-align:center}
+.ck{min-height:46px;border-radius:10px;border:1px solid var(--ln);background:var(--bg);color:var(--mu);font-size:22px;cursor:pointer}
+.ck.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+h1{font-size:21px;letter-spacing:.2px}
+.hd{background:linear-gradient(135deg,#1e3a8a,#1d4ed8);color:#fff;border-radius:16px;padding:16px 16px 14px;margin:4px 0 8px;border-bottom:4px solid var(--rd)}
+.hd h1{margin:2px 0 0;color:#fff}.hd .k{font-size:11px;text-transform:uppercase;letter-spacing:1.6px;color:#c7d6ff;font-weight:600}
+.cd{box-shadow:0 1px 3px rgba(16,24,40,.10)}
+.cd h2{border-left:4px solid var(--rd);padding-left:9px}
+.bar{height:9px}.bar i{background:linear-gradient(90deg,var(--ac),var(--rd))}
+.chip{font-weight:600}.chip.on{box-shadow:0 2px 6px rgba(29,78,216,.35)}
+.it button{color:var(--rd)}
+.btn{font-weight:600}.btn.w:not(.g){background:var(--rd)}
+.ex.dn .tag{background:var(--rd);color:#fff}
+.vr{display:flex;align-items:center;gap:8px;margin-top:10px}.vr span{font-size:12px;color:var(--mu);flex:0 0 auto}
+.vs{flex:1;min-width:0;min-height:46px;font:inherit;font-size:15px;color:var(--tx);background:var(--bg);border:1px solid var(--ln);border-radius:10px;padding:0 8px}
+.cr{position:relative;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:2px -12px 0;padding:4px 7% 8px;scroll-padding:0 7%;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.cr::-webkit-scrollbar{display:none}
+.sl{flex:0 0 86%;scroll-snap-align:center;scroll-snap-stop:always;align-self:flex-start;background:var(--bg);border:1px solid var(--ln);border-radius:14px;padding:12px;opacity:.55;transform:scale(.96);transition:opacity .2s,transform .2s}
+.sl.on{opacity:1;transform:none;border-color:var(--ac);box-shadow:0 2px 8px rgba(29,78,216,.18)}
+.sl .ex{border:0;padding:0}.sl:not(.on) .dt,.sl:not(.on) .nm a{display:none}
+.dots{display:flex;justify-content:center;gap:6px;margin:4px 0 10px}.dots i{width:7px;height:7px;border-radius:50%;background:var(--ln)}.dots i.on{width:18px;border-radius:4px;background:var(--rd)}
+.cd{overflow:hidden}
+.sl{min-width:0;max-width:86%;overflow:hidden;overflow-wrap:anywhere;word-break:break-word}
+.sl .top,.sl .nm,.sl .nm>div{min-width:0}
+.sl .nm b{display:block;line-height:1.25}
+.sl .tag{display:inline-block;margin:4px 0 0;white-space:normal}
+.sl .vr{min-width:0}.sl .vs{width:100%;min-width:0;max-width:100%;text-overflow:ellipsis}
+.sl .mu{overflow-wrap:anywhere}
 </style><link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#1f7a5c">
+<meta name="theme-color" content="#1d4ed8">
 <link rel="apple-touch-icon" href="icon-192.png">
 </head><body>
-<h1>Recomposición · 10 semanas</h1>
+<header class="hd"><div class="k">Plan de entrenamiento</div><h1>Recomposición · 10 semanas</h1></header>
 <div id="app"></div>
 <script>
 const PLAN=[
@@ -76,13 +105,48 @@ let wk=Math.min(10,Math.max(1,Math.floor((now-st)/6048e5)+1)),dy=(now.getDay()+6
 const key=(w,i)=>w+"-"+i;
 const cur=()=>S.d[key(wk,dy)]=S.d[key(wk,dy)]||{ex:{},food:[]};
 const isDone=(w,i)=>!!(S.d[key(w,i)]&&S.d[key(w,i)].done);
-function prev(id){for(let w=wk-1;w>=1;w--){const x=(S.d[key(w,dy)]||{ex:{}}).ex[id];if(x&&x.kg)return x}return null}
+function prev(id){const cv=vAt(wk,id);for(let w=wk-1;w>=1;w--){if(vAt(w,id)!==cv)continue;const x=(S.d[key(w,dy)]||{ex:{}}).ex[id];if(!x)continue;const s=(x.sets||[]).filter(t=>t&&t.kg);if(s.length)return s;if(x.kg)return[{kg:x.kg,reps:x.reps}]}return null}
+const VAR={
+pb:["Press banca con mancuernas","Press de pecho en máquina","Press banca en Smith"],
+pm:["Press de hombros con mancuernas","Press de hombros en máquina","Press militar en Smith"],
+pi:["Press inclinado con barra","Press inclinado en máquina","Press inclinado en Smith"],
+el:["Elevaciones laterales en polea","Máquina de elevaciones laterales","Elevaciones laterales inclinado de lado"],
+tr:["Press francés con barra Z","Extensión de tríceps con mancuerna","Fondos en máquina","Extensión de tríceps con soga"],
+dom:["Jalón al pecho agarre ancho","Dominadas asistidas en máquina","Dominadas con banda elástica"],
+rb:["Remo con mancuerna a una mano","Remo en máquina con pecho apoyado","Remo en polea baja","Remo en Smith"],
+jp:["Jalón al pecho agarre ancho","Jalón en máquina","Dominadas asistidas en máquina"],
+rm:["Remo en máquina","Remo en polea baja","Remo con barra T"],
+fp:["Pájaros en máquina","Pájaros con mancuernas","Face pull con banda elástica"],
+bi:["Curl con barra Z","Curl en polea","Curl en máquina (predicador)","Curl martillo con mancuernas"],
+sen:["Sentadilla en Smith","Sentadilla hack en máquina","Sentadilla goblet con mancuerna"],
+pre:["Sentadilla hack en máquina","Prensa horizontal","Sentadilla en Smith"],
+prm:["Peso muerto rumano con mancuernas","Peso muerto rumano en Smith","Hiperextensiones con peso"],
+cf:["Curl femoral sentado en máquina","Curl femoral tumbado en máquina","Curl femoral con mancuerna","Curl nórdico asistido"],
+gem:["Gemelos sentado en máquina","Gemelos en prensa","Gemelos en Smith"],
+hip:["Hip thrust en máquina","Puente de glúteos con barra","Patada de glúteo en polea"],
+zan:["Zancadas caminando con mancuernas","Sentadilla split en Smith","Prensa a una pierna"],
+abs:["Crunch en polea","Elevación de piernas colgado","Rueda abdominal","Crunch en máquina"],
+pla:["Plancha lateral","Rueda abdominal","Hollow hold"],
+car:["Bicicleta fija","Elíptico","Escaladora"]};
+function vAt(w,id){for(let k=w;k>=1;k--){const x=(S.d[key(k,dy)]||{ex:{}}).ex[id];if(x&&x.v!==undefined)return x.v}return 0}
+function vname(e,i){const n=i?(VAR[e[0]]||[])[i-1]:null;return n?(e[0]==="car"?e[1].replace(/^Cinta/,n):n):e[1]}
+function varSel(e,vi){const a=VAR[e[0]];if(!a)return"";let o='<option value="0"'+(vi?'':' selected')+'>Original: '+E(e[1])+'</option>';a.forEach((n,k)=>{o+='<option value="'+(k+1)+'"'+(vi===k+1?' selected':'')+'>'+E(n)+'</option>'});return'<div class="vr"><span>Variante</span><select class="vs" onchange="setV(\''+e[0]+'\',this.value)">'+o+'</select></div>'}
+function setV(id,v){const x=cur().ex[id]=cur().ex[id]||{};x.v=+v;save();render()}
+let act=0,crT;
+function crScroll(){clearTimeout(crT);crT=setTimeout(()=>{const c=document.getElementById("cr");if(!c)return;const r=c.getBoundingClientRect(),m=r.left+r.width/2;let b=0,bd=1e9;[...c.children].forEach((el,i)=>{const q=el.getBoundingClientRect(),dd=Math.abs(q.left+q.width/2-m);if(dd<bd){bd=dd;b=i}});setAct(b)},90)}
+function setAct(i){act=i;const c=document.getElementById("cr");if(!c)return;[...c.children].forEach((el,k)=>el.classList.toggle("on",k===i));document.querySelectorAll(".dots i").forEach((el,k)=>el.classList.toggle("on",k===i))}
+function slideX(c,el){return el.offsetLeft-(c.clientWidth-el.offsetWidth)/2}
+function snapTo(i){const c=document.getElementById("cr"),el=c&&c.children[i];if(el)c.scrollLeft=slideX(c,el)}
+function nextSlide(){const c=document.getElementById("cr"),el=c&&c.children[act+1];if(el)c.scrollTo({left:slideX(c,el),behavior:"smooth"})}
+function nSets(t){const m=String(t).match(/^(\d+)×(\d+)(?:-(\d+))?/);return m?{n:+m[1],top:+(m[3]||m[2])}:{n:3,top:10}}
+function sug(id,i,t){const x=cur().ex[id]||{},s=x.sets||[],p=prev(id)||[];let kg="";for(let j=i;j>=0&&!kg;j--)if(s[j]&&s[j].kg)kg=s[j].kg;if(!kg)kg=(p[i]||p[p.length-1]||{}).kg||"";return{kg:kg,reps:(p[i]||{}).reps||nSets(t).top}}
+function setS(id,i,f,v){const x=cur().ex[id]=cur().ex[id]||{};x.sets=x.sets||[];x.sets[i]=x.sets[i]||{};x.sets[i][f]=v;save()}
+function tick(id,i,t){const x=cur().ex[id]=cur().ex[id]||{};x.sets=x.sets||[];const s=x.sets[i]=x.sets[i]||{};if(s.ok)s.ok=false;else{const g=sug(id,i,t);s.kg=s.kg||g.kg;s.reps=s.reps||g.reps;s.ok=true}const n=nSets(t).n;x.done=x.sets.length>=n&&x.sets.slice(0,n).every(q=>q&&q.ok);const d=cur();if(PLAN[dy].ex.every(q=>(d.ex[q[0]]||{}).done))d.done=true;save();render();if(x.done&&act<PLAN[dy].ex.length-1)setTimeout(nextSlide,420)}
 function setEx(id,f,v){const d=cur(),x=d.ex[id]=d.ex[id]||{};x[f]=v;if(f==="done"){const L=PLAN[dy].ex;if(L.every(e=>(d.ex[e[0]]||{}).done))d.done=true;save();render()}else save()}
-function stp(id,dl){const x=cur().ex[id]=cur().ex[id]||{};const b=+x.kg||+(prev(id)||{}).kg||0;x.kg=String(Math.max(0,b+dl));save();render()}
 function setD(f,v){cur()[f]=v;save();if(f==="done")render()}
 function addFood(){const n=document.getElementById("fn").value.trim();if(!n)return;cur().food.push({n:n,k:+document.getElementById("fk").value||0,p:+document.getElementById("fp").value||0});save();render()}
 function delFood(i){cur().food.splice(i,1);save();render()}
-function go(w,i){if(w)wk=w;if(i!==undefined)dy=i;render()}
+function go(w,i){if(w)wk=w;if(i!==undefined)dy=i;act=0;render()}
 function cfg(f,v){S[f]=f==="start"?v:(+v||S[f]);save();render()}
 function exp(){document.getElementById("bk").value=JSON.stringify(S)}
 function imp(){try{const o=JSON.parse(document.getElementById("bk").value);if(o&&o.d){S=o;save();render()}}catch(e){alert("Respaldo no válido")}}
@@ -90,7 +154,7 @@ function chart(){const p=[];for(let w=1;w<=10;w++)for(let i=0;i<7;i++){const x=S
 if(p.length<2)return'<p class="mu">Cargá al menos 2 pesajes para ver la curva.</p>';
 const ys=p.map(a=>a[1]),mn=Math.min(...ys)-.5,mx=Math.max(...ys)+.5;
 const pts=p.map(a=>(a[0]/69*300+10).toFixed(1)+","+(110-(a[1]-mn)/(mx-mn)*100).toFixed(1)).join(" ");
-return'<svg viewBox="0 0 320 120"><polyline points="'+pts+'" fill="none" style="stroke:var(--ac);stroke-width:2"/></svg><div class="mu">'+ys[0]+' kg → '+ys[ys.length-1]+' kg · mín '+Math.min(...ys)+' · máx '+Math.max(...ys)+'</div>'}
+return'<svg viewBox="0 0 320 120"><polyline points="'+pts+'" fill="none" style="stroke:var(--rd);stroke-width:2.5"/></svg><div class="mu">'+ys[0]+' kg → '+ys[ys.length-1]+' kg · mín '+Math.min(...ys)+' · máx '+Math.max(...ys)+'</div>'}
 const IC={
 bench:'<circle cx="9" cy="27" r="3"/><path d="M13 29h22M16 29v9M35 29v9M25 29V14M17 14h16M17 11v6M33 11v6"/>',
 incl:'<circle cx="11" cy="20" r="3"/><path d="M14 23l17 11M31 34v8M16 28v13M25 26l-3-14M17 12h12"/>',
@@ -144,11 +208,12 @@ h+='</div><div class="cd"><b>Semana '+wk+' de 10</b> <span class="mu">· '+wd+'/
 h+='<div class="dg">';PLAN.forEach((p,i)=>{h+='<button class="chip'+(i===dy?' on':'')+(isDone(wk,i)?' ok':'')+'" onclick="go(0,'+i+')">'+p.n+'</button>'});
 h+='</div><div class="cd"><h2>'+P.n+' · '+P.t+'</h2>';
 if(!P.ex.length)h+='<p class="mu">Día de descanso: dormí bien y comé según tu plan.</p>';
-P.ex.forEach(e=>{const x=d.ex[e[0]]||{},pv=prev(e[0]),w=e[3]!==0;
-h+='<div class="ex'+(x.done?' dn':'')+'"><div class="top"><input type="checkbox" '+(x.done?'checked ':'')+'onchange="setEx(\''+e[0]+'\',\'done\',this.checked)"><div class="nm">'+ico(e[0])+'<div><b>'+e[1]+'</b> <span class="tag">'+e[2]+'</span>'+(w?'<br><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query='+encodeURIComponent(e[1]+' técnica')+'">▶ ver técnica</a>':'')+'</div></div>';
-h+='</div>';
-if(w)h+='<div class="in"><div class="f"><span>Peso (kg)</span><div class="kg"><button class="st" data-i="'+e[0]+'" onclick="stp(this.dataset.i,-2.5)">−</button><input type="number" step="0.5" inputmode="decimal" placeholder="kg" value="'+E(x.kg||"")+'" onchange="setEx(\''+e[0]+'\',\'kg\',this.value)"><button class="st" data-i="'+e[0]+'" onclick="stp(this.dataset.i,2.5)">+</button></div></div><div class="f"><span>Reps</span><input type="number" inputmode="numeric" placeholder="reps" value="'+E(x.reps||"")+'" onchange="setEx(\''+e[0]+'\',\'reps\',this.value)"></div></div>'+(pv?'<div class="mu" style="margin-top:6px">Semana anterior: '+E(pv.kg)+' kg × '+E(pv.reps||"?")+'</div>':'');
-h+='</div>'});
+if(P.ex.length>1)h+='<div class="mu" style="text-align:center;margin-bottom:4px">‹ Deslizá para cambiar de ejercicio ›</div>';if(P.ex.length)h+='<div class="cr" id="cr" onscroll="crScroll()">';P.ex.forEach((e,ei)=>{const x=d.ex[e[0]]||{},pv=prev(e[0]),w=e[3]!==0,vi=vAt(wk,e[0]),nmx=vname(e,vi);
+h+='<div class="sl'+(ei===act?' on':'')+'"><div class="ex'+(x.done?' dn':'')+'"><div class="top"><input type="checkbox" '+(x.done?'checked ':'')+'onchange="setEx(\''+e[0]+'\',\'done\',this.checked)"><div class="nm">'+ico(e[0])+'<div><b>'+nmx+'</b> <span class="tag">'+e[2]+'</span>'+(w?'<br><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query='+encodeURIComponent(nmx+' técnica')+'">▶ ver técnica</a>':'')+'</div></div>';
+h+='</div><div class="dt">'+varSel(e,vi);
+if(w){const T=nSets(e[2]),sets=x.sets||[];h+='<div class="sh"><span>Serie</span><span>Peso (kg)</span><span>Reps</span><span></span></div>';for(let i=0;i<T.n;i++){const s=sets[i]||{},g=sug(e[0],i,e[2]);h+='<div class="sr"><b>'+(i+1)+'</b><input type="number" step="0.5" inputmode="decimal" placeholder="'+E(g.kg||"kg")+'" value="'+E(s.kg||"")+'" onchange="setS(\''+e[0]+'\','+i+',\'kg\',this.value)"><input type="number" inputmode="numeric" placeholder="'+E(g.reps)+'" value="'+E(s.reps||"")+'" onchange="setS(\''+e[0]+'\','+i+',\'reps\',this.value)"><button class="ck'+(s.ok?' on':'')+'" onclick="tick(\''+e[0]+'\','+i+',\''+e[2]+'\')">✓</button></div>'}
+if(pv)h+='<div class="mu" style="margin-top:6px">Semana anterior: '+pv.map(q=>E(q.kg)+'×'+E(q.reps||"?")).join(" · ")+'</div>';h+='<div class="mu" style="margin-top:4px">Tocá ✓ para confirmar con los valores sugeridos.</div>'}
+h+='</div></div></div>'});if(P.ex.length)h+='</div><div class="dots">'+P.ex.map((_,i)=>'<i'+(i===act?' class="on"':'')+'></i>').join("")+'</div>';
 h+='<div class="fl"><button class="btn w'+(d.done?'':' g')+'" onclick="setD(\'done\','+(!d.done)+')">'+(d.done?'✓ Día completado':'Marcar día completado')+'</button></div>';
 h+='<div class="fl"><span class="mu">Peso corporal</span><input type="number" step="0.1" inputmode="decimal" placeholder="kg" value="'+E(d.bw||"")+'" onchange="setD(\'bw\',this.value)"><span class="mu">Sueño</span><input type="number" step="0.5" inputmode="decimal" placeholder="hs" value="'+E(d.sleep||"")+'" onchange="setD(\'sleep\',this.value)"></div></div>';
 const K=d.food.reduce((a,f)=>a+f.k,0),Pr=d.food.reduce((a,f)=>a+f.p,0);
@@ -161,7 +226,7 @@ h+='<div class="cd"><h2>Evolución del peso</h2>'+chart()+'</div>';
 h+='<div class="cd"><h2>Ajustes y respaldo</h2><div class="fl"><span class="mu">Inicio (lunes)</span><input type="date" value="'+S.start+'" onchange="cfg(\'start\',this.value)"></div>';
 h+='<div class="fl"><span class="mu">Meta kcal</span><input type="number" value="'+S.kcal+'" onchange="cfg(\'kcal\',this.value)"><span class="mu">Proteína g</span><input type="number" value="'+S.prot+'" onchange="cfg(\'prot\',this.value)"></div>';
 h+='<p class="mu">Los datos se guardan en este navegador. Exportá un respaldo de vez en cuando.</p><textarea id="bk"></textarea><div class="fl"><button class="btn g" onclick="exp()">Exportar</button><button class="btn g" onclick="imp()">Importar</button></div></div>';
-document.getElementById("app").innerHTML=h}
+const y=window.scrollY;document.getElementById("app").innerHTML=h;snapTo(act);window.scrollTo(0,y)}
 render();
 </script><script>if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(function(){});</script>
 </body></html>
