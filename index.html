@@ -159,6 +159,15 @@ body{background:radial-gradient(70% 36% at 50% 0%,rgba(190,110,230,.28),transpar
 .mz.p{fill:var(--rd);stroke:#fff;stroke-width:1;filter:drop-shadow(0 0 2px rgba(255,60,60,.9))}
 .mz.s{fill:#ffb400;stroke:#fff}
 .ln{fill:none;stroke:#0a0c1c;stroke-width:.8;stroke-linecap:round}
+.nv{display:flex;gap:8px;margin:8px 0 6px}.nv .chip{flex:1;font-size:22px;padding:8px 0}
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.tl{background:rgba(255,255,255,.05);border:1px solid #34408f;border-left:4px solid var(--rd);border-radius:4px;padding:8px 10px;min-width:0}
+.tv{font-family:"Bebas Neue",Impact,"Arial Narrow",sans-serif;font-size:32px;line-height:1.1;color:#ffd21a;text-shadow:2px 2px 0 #5a0d0d}
+.gh{font-family:"Bebas Neue",Impact,"Arial Narrow",sans-serif;font-style:italic;font-size:20px;letter-spacing:1.2px;text-transform:uppercase;color:#ffd21a;margin:14px 0 2px;border-bottom:1px solid #34408f}
+.rr{display:grid;grid-template-columns:1fr auto;gap:0 10px;padding:7px 0;border-top:1px solid rgba(255,255,255,.08);overflow-wrap:anywhere}
+.rr b{text-align:right;color:#fff}.rr .mu{grid-column:1/3}
+.vr2{display:grid;grid-template-columns:30px 1fr 58px;gap:8px;align-items:center;margin:5px 0}
+.vbar{height:12px;background:#3a0a14;border:1px solid #fff;border-radius:2px;transform:skewX(-14deg);overflow:hidden}.vbar i{display:block;height:100%;background:linear-gradient(180deg,#fff06a,#ffb000)}
 </style><link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#14102e">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -292,6 +301,37 @@ function musPanel(P){const st=dayMus(P),k=Object.keys(st);if(!k.length)return"";
 const tx=t=>'<text x="35" y="156" text-anchor="middle" font-size="8" fill="#b9c2ee">'+t+'</text>';
 return'<div class="mus"><svg viewBox="0 0 150 160"><g transform="translate(2,0)">'+figSvg(st,0)+tx("FRENTE")+'</g><g transform="translate(78,0)">'+figSvg(st,1)+tx("ESPALDA")+'</g></svg><div class="mi"><div class="mk">Músculos de hoy</div><div>'+pill("p")+'</div><div class="mk" style="margin-top:6px;font-size:13px">Apoyo</div><div>'+pill("s")+'</div></div></div>'}
 function muLine(id){const m=EG[id];if(!m)return"";return'<div class="mg"><b>'+m[0].map(g=>MN[g]).join(" · ")+'</b>'+(m[1]?' <i>+ '+m[1].map(g=>MN[g]).join(", ")+'</i>':'')+'</div>'}
+let view="t";
+function setView(v){view=v;render();window.scrollTo(0,0)}
+function nav(){return'<div class="nv"><button class="chip'+(view==="t"?' on':'')+'" onclick="setView(\'t\')">Entrenar</button><button class="chip'+(view==="s"?' on':'')+'" onclick="setView(\'s\')">Resumen</button></div>'}
+const tile=(a,b,c)=>'<div class="tl"><div class="mu">'+a+'</div><div class="tv">'+b+'</div><div class="mu">'+c+'</div></div>';
+const dl=(a,b,u)=>{const x=b-a;return(x>0?"+":x<0?"−":"")+f1(Math.abs(x))+u};
+function sumData(){const R={},wv={};let days=0,sets=0,vol=0;
+for(let w=1;w<=10;w++)for(let d=0;d<5;d++){const x=S.d[key(w,d)];if(!x)continue;if(x.done)days++;
+for(const id in(x.ex||{})){const q=PLAN[d].ex.find(z=>z[0]===id);if(!q)continue;const e=x.ex[id],n=vname(q,vAtD(w,d,id));
+let L=(e.sets||[]).filter(t=>t&&t.ok&&+t.kg).map(t=>({kg:+t.kg,reps:+t.reps||0}));if(!L.length&&+e.kg)L=[{kg:+e.kg,reps:+e.reps||0}];
+L.forEach(t=>{sets++;vol+=t.kg*t.reps;wv[w]=(wv[w]||0)+t.kg*t.reps;const e1=t.kg*(1+Math.min(t.reps||1,12)/30);const r=R[n]=R[n]||{n:n,best:null};if(!r.best||t.kg>r.best.kg||(t.kg===r.best.kg&&t.reps>r.best.reps))r.best={kg:t.kg,reps:t.reps,w:w,d:d,e:e1}})}}
+return{R:R,days:days,sets:sets,vol:vol,wv:wv}}
+function ser(){const P=[];for(let w=1;w<=10;w++)for(let d=0;d<5;d++){const x=S.d[key(w,d)];if(x&&+x.bw)P.push([(w-1)*5+d,+x.bw])}return P}
+function spark(P,col,u){if(P.length<2)return'<div class="mu">Todavía hay pocos datos para el gráfico.</div>';const ys=P.map(a=>a[1]),mn=Math.min(...ys),mx=Math.max(...ys),r=(mx-mn)||1,x0=P[0][0],xs=(P[P.length-1][0]-x0)||1;
+return'<svg viewBox="0 0 320 90" style="width:100%;height:auto;display:block;background:rgba(0,0,0,.25);border-radius:6px"><polyline points="'+P.map(a=>((a[0]-x0)/xs*300+10).toFixed(1)+","+(80-(a[1]-mn)/r*66).toFixed(1)).join(" ")+'" fill="none" style="stroke:'+col+';stroke-width:2.5"/></svg><div class="mu">'+f1(ys[0])+' → '+f1(ys[ys.length-1])+u+' · mín '+f1(mn)+' · máx '+f1(mx)+'</div>'}
+function renderS(){const D=sumData();let h=nav(),ds=0,dn=0;
+for(const k in S.d){const x=S.d[k];if(x&&+x.sleep){ds+=+x.sleep;dn++}}
+h+='<div class="cd"><h2>Resumen general</h2><div class="tg">'+tile("Días completados",D.days+" / 50","de lunes a viernes")+tile("Series hechas",D.sets,"confirmadas con ✓")+tile("Volumen total",f1(D.vol/1000)+" t","peso × repeticiones")+tile("Sueño promedio",dn?f1(ds/dn)+" h":"—",dn+" registros")+'</div></div>';
+const P=ser(),bw=P.length?P[P.length-1][1]:0,bw0=P.length?P[0][1]:0,FB=[];
+for(let w=1;w<=10;w++){const q=bfCalc(w);if(q.r!==null)FB.push([w,q.r,bwOf(w)])}
+const hh=bfv("h",10),bmi=hh&&bw?bw/Math.pow(hh/100,2):0,fl=FB.length?FB[FB.length-1]:null,f0=FB.length?FB[0]:null;
+h+='<div class="cd"><h2>Cuerpo</h2><div class="tg">'+tile("Peso actual",bw?f1(bw)+" kg":"—",P.length>1?dl(bw0,bw," kg")+" desde el inicio":"")+tile("IMC",bmi?f1(bmi):"—",bmi?(bmi<18.5?"Bajo peso":bmi<25?"Normal":bmi<30?"Sobrepeso":"Obesidad"):"cargá altura y peso")+tile("% de grasa",fl?f1(fl[1])+" %":"—",FB.length>1?dl(f0[1],fl[1]," pts desde el inicio"):"")+tile("Masa magra",fl&&fl[2]?f1(fl[2]*(1-fl[1]/100))+" kg":"—",fl&&fl[2]?"grasa "+f1(fl[2]*fl[1]/100)+" kg":"")+'</div>';
+h+='<div class="mu" style="margin-top:10px">Peso corporal</div>'+spark(P,"var(--yl)"," kg")+'<div class="mu" style="margin-top:10px">% de grasa</div>'+spark(FB.map(a=>[a[0],a[1]]),"var(--rd)"," %")+'</div>';
+const MS=[["w","Cintura"],["n","Cuello"],["br","Brazo"],["ch","Pecho"],["mm","Muslo"]];let mr="";
+MS.forEach(m=>{let a=0,b=0;for(let w=1;w<=10;w++){const v=+((S.bf||{})[w]||{})[m[0]];if(v){if(!a)a=v;b=v}}if(a)mr+='<div class="rr"><span>'+m[1]+'</span><b>'+f1(b)+' cm</b><span class="mu">'+(a!==b?"antes "+f1(a)+" · "+dl(a,b," cm"):"primera medición")+'</span></div>'});
+h+='<div class="cd"><h2>Medidas</h2>'+(mr||'<div class="mu">Cuando cargues cintura, cuello, brazo, pecho o muslo las vas a ver acá.</div>')+'</div>';
+const G={};for(const n in D.R){const f=gfac(n),g=f?f.g:"otros";(G[g]=G[g]||[]).push(D.R[n])}
+let rh="";Object.keys(GN).concat(["otros"]).forEach(g=>{if(!G[g])return;G[g].sort((a,b)=>b.best.e-a.best.e);rh+='<div class="gh">'+(GN[g]||"Otros ejercicios")+'</div>';G[g].forEach(r=>{rh+='<div class="rr"><span>'+E(r.n)+'</span><b>'+f1(r.best.kg)+' kg × '+(r.best.reps||"?")+'</b><span class="mu">1RM estimado '+f1(r.best.e)+' kg · R'+r.best.w+' '+DN[r.best.d]+'</span></div>'})});
+h+='<div class="cd"><h2>Récords por grupo muscular</h2>'+(rh||'<div class="mu">Todavía no hay series confirmadas. Cuando las anotes con ✓ aparecen acá.</div>')+'<div class="mu" style="margin-top:8px">Es la mejor serie de cada ejercicio, por peso. El 1RM estimado es una referencia, no un levantamiento real.</div></div>';
+const mx=Math.max(1,...Object.values(D.wv));let vb="";for(let w=1;w<=10;w++){const v=D.wv[w]||0;vb+='<div class="vr2"><span>R'+w+'</span><div class="vbar"><i style="width:'+(v/mx*100)+'%"></i></div><span class="mu">'+f1(v/1000)+' t</span></div>'}
+h+='<div class="cd"><h2>Volumen por semana</h2>'+vb+'</div>';
+const y=window.scrollY;document.getElementById("app").innerHTML=h;window.scrollTo(0,y)}
 function nSets(t){const m=String(t).match(/^(\d+)×(\d+)(?:-(\d+))?/);return m?{n:+m[1],top:+(m[3]||m[2])}:{n:3,top:10}}
 function sug(id,i,t){const x=cur().ex[id]||{},s=x.sets||[],p=prev(id)||[];let kg="";for(let j=i;j>=0&&!kg;j--)if(s[j]&&s[j].kg)kg=s[j].kg;if(!kg)kg=(p[i]||p[p.length-1]||{}).kg||"";if(!kg){const b=best(id,vAt(wk,id));if(b)kg=b.kg}if(!kg){const q=PLAN[dy].ex.find(z=>z[0]===id),r=q&&rec(q,vname(q,vAt(wk,id)));if(r)kg=r.kg}return{kg:kg,reps:(p[i]||{}).reps||nSets(t).top}}
 function setS(id,i,f,v){const x=cur().ex[id]=cur().ex[id]||{};x.sets=x.sets||[];x.sets[i]=x.sets[i]||{};x.sets[i][f]=v;save()}
@@ -353,9 +393,10 @@ fut:'<circle class="e" cx="32" cy="32" r="22"/><path d="M32 21l11 8-4 13H25l-4-1
 walk:I([34,12],'M34 18l-2 19M32 37l-9 18M32 37l10 6v13M33 23l-10 8M33 23l10 8','M4 58h56','M44 8h14M54 4l4 4-4 4')};
 const ico=id=>'<svg class="th" viewBox="0 0 64 64">'+(IC2[MAP[id]]||"")+'</svg>';
 function render(){
+if(view==="s"){renderS();return}
 const d=cur(),P=PLAN[dy];
 let wd=0;for(let i=0;i<5;i++)if(isDone(wk,i))wd++;
-let h='<div class="row">';for(let w=1;w<=10;w++)h+='<button class="chip'+(w===wk?' on':'')+'" onclick="go('+w+')">R'+w+'</button>';
+let h=nav()+'<div class="row">';for(let w=1;w<=10;w++)h+='<button class="chip'+(w===wk?' on':'')+'" onclick="go('+w+')">R'+w+'</button>';
 h+='</div><div class="cd"><b>ROUND '+wk+' / 10</b> <span class="mu">· '+wd+'/5 días completados</span><div class="bar"><i style="width:'+Math.round(wd/5*100)+'%"></i></div><div class="mu">'+NOTE[wk-1]+'</div></div>';
 h+='<div class="dg">';PLAN.forEach((p,i)=>{h+='<button class="chip'+(i===dy?' on':'')+(isDone(wk,i)?' ok':'')+'" onclick="go(0,'+i+')">'+p.n+'</button>'});
 h+='</div><div class="cd"><h2>'+P.n+' · '+P.t+'</h2>'+musPanel(P);
